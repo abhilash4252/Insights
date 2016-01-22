@@ -57,6 +57,13 @@ $('#container').highcharts('Map', {
     data: data,
     mapData: Highcharts.maps[world_map],
     joinBy: 'hc-key',
+    allowPointSelect: true,
+    cursor: 'pointer',
+    events: {
+      click: function (e) {
+        e.point.zoomTo();
+      }
+    },
     states: {
       hover: {
         color: '#BADA55'
@@ -68,5 +75,10 @@ $('#container').highcharts('Map', {
       format: '{point.name}'
     }
   }]
+});
+$(window).load(function () {
+  setTimeout( function () {
+    $('#container').highcharts().series[0].points[0].zoomTo();
+  }, 1500);
 });
 });
