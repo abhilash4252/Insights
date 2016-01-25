@@ -6,10 +6,6 @@ $(function() {
         'value': 100
       },
       {
-        'hc-key': 'ca',
-        'value': 20
-      },
-      {
         'hc-key': 'gb',
         'value': 50
       },
@@ -19,15 +15,11 @@ $(function() {
       },
       {
         'hc-key': 'tr',
-        'value': 48
-      },
-      {
-        'hc-key': 'in',
-        'value': 5
+        'value': 25
       },
       {
         'hc-key': 'my',
-        'value': 86
+        'value': 15
       },
       {
         'hc-key': 'br',
@@ -40,18 +32,29 @@ $('#container').highcharts('Map', {
     text: "Top Countries"
   },
 
+  chart: {
+    animation: true,
+    backgroundColor: "#ffffff",
+    borderColor: "#000000"
+  }, 
+
   mapNavigation: {
     enabled: true,
     buttonOptions: {
       verticalAlign: 'button'
     }
   },
-
   colorAxis: {
-    min: 0
+      min: 1,
+      max: 100,
+      type: 'logarithmic',
+      minColor: '#151515',
+      maxColor: '#2B87F2'
   },
 
   series: [{
+    nullColor: "#ffffff",
+    borderColor: "#000000",
     name: 'Top Countries',
     animation: true,
     data: data,
@@ -59,14 +62,9 @@ $('#container').highcharts('Map', {
     joinBy: 'hc-key',
     allowPointSelect: true,
     cursor: 'pointer',
-    events: {
-      click: function (e) {
-        e.point.zoomTo();
-      }
-    },
     states: {
       hover: {
-        color: '#BADA55'
+        color: '#ff6600'
       }
     },
 
@@ -78,7 +76,7 @@ $('#container').highcharts('Map', {
 });
 $(window).load(function () {
   setTimeout( function () {
-    $('#container').highcharts().series[0].points[0].zoomTo();
-  }, 1500);
+    $('#container').highcharts().setSize(1424,800).mapZoom(0.4);
+  }, 0);
 });
 });

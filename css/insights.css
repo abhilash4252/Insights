@@ -1,7 +1,12 @@
 #container {
   width:100%;
-  heoght:400px;
+  height:400px;
 }
 .highcharts-legend, .highcharts-button {
   display: none;
+}
+
+path {
+  stroke: black;
+  stroke-width: 0.2px;
 }

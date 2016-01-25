@@ -2,33 +2,47 @@ $(function() {
   var us_map = 'countries/us/us-all-all-highres';
   var us_data = [
     {
-      'hc-key': 'us-la-117',
-      'z': 20
+      "hc-key": 'us-fl-001',
+      'z': 130
     },
     {
-      "hc-key": 'us-ca-037',
-      'z': 25
+      "hc-key": 'us-mn-001',
+      'z': 90
     },
     {
-      "hc-key": 'us-ca-075',
-      'z': 20
+      "hc-key": 'us-ca-001',
+      'z': 85
     },
     {
-      "hc-key": 'us-tx-113',
-      'z': 50
+      "hc-key": 'us-md-001',
+      'z': 70
+    },
+    {
+      "hc-key": 'us-tx-001',
+      'z': 70
+    },
+    {
+      "hc-key": 'us-nc-001',
+      'z': 70
     },
    {
-      "hc-key": 'us-ny-061',
-      'z': 50
+      "hc-key": 'us-ny-001',
+      'z': 60
    },
    {
-    "hc-key": "us-tx-015",
-    'z': 35
-   }];
+      "hc-key": 'us-ny-009',
+      'z': 40
+   }
+  ];
 
 $('#container').highcharts('Map', {
    title: {
     text: "Top Cities In US"
+  },
+  chart: {
+    animation: true,
+    backgroundColor: "#ffffff",
+    borderColor: "#ffffff"
   },
 
   mapNavigation: {
@@ -39,7 +53,8 @@ $('#container').highcharts('Map', {
   },
 
   colorAxis: {
-    min: 0
+    min: 0,
+    max: 100
   },
 
   series: [{
@@ -47,6 +62,7 @@ $('#container').highcharts('Map', {
     mapData: Highcharts.maps[us_map],
     joinBy: 'hc-key',
     allAreas: false,
+    borderColor: "#ffffff",
 
     dataLabels: {
       enabled: false,
@@ -69,6 +85,7 @@ $('#container').highcharts('Map', {
                   data: us_data,
                   minSize: 4 ,
                   maxSize: '12%',
+                  color: "#4DAEE9",
                   tooltip: {
                       pointFormat: '{point.name}: {point.z} '
                   }
