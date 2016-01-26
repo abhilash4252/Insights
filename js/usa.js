@@ -78,17 +78,18 @@ $('#container').highcharts('Map', {
               enableMouseTracking: false
   },
    {
-                  type: 'mapbubble',
-                  mapData: Highcharts.geojson(Highcharts.maps[us_map]),
-                  name: 'Sojerns Inbound Impact',
-                  joinBy: ['hc-key'],
-                  data: us_data,
-                  minSize: 4 ,
-                  maxSize: '12%',
-                  color: "#4DAEE9",
-                  tooltip: {
-                      pointFormat: '{point.name}: {point.z} '
-                  }
-              }]
+              type: 'mapbubble',
+              mapData: Highcharts.geojson(Highcharts.maps[us_map]),
+              name: 'Sojerns Inbound Impact',
+              joinBy: ['hc-key'],
+              data: us_data,
+              minSize: 4 ,
+              maxSize: '12%',
+              color: "#4DAEE9",
+              tooltip: {
+                 pointFormat: '{point.name}: {point.z} '
+              }
+    }
+  ]
 });
 });

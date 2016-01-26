@@ -36,7 +36,7 @@ $('#container').highcharts('Map', {
     animation: true,
     backgroundColor: "#ffffff",
     borderColor: "#000000"
-  }, 
+  },
 
   mapNavigation: {
     enabled: true,
@@ -75,8 +75,6 @@ $('#container').highcharts('Map', {
   }]
 });
 $(window).load(function () {
-  setTimeout( function () {
-    $('#container').highcharts().setSize(1424,800).mapZoom(0.4);
-  }, 0);
+  $('#container').highcharts().series[0].points[0].zoomTo();
 });
 });
