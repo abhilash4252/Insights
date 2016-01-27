@@ -1,6 +1,13 @@
 $(function() {
   var world_map = 'custom/world';
-    var data = [
+  var us_map = 'countries/us/us-all-all-highres';
+  var my_city = [
+    {
+      "hc-key": "us",
+      'z': 150
+    }
+  ];
+  var data = [
       {
         'hc-key': 'us',
         'value': 100
@@ -29,7 +36,7 @@ $(function() {
 
 $('#container').highcharts('Map', {
    title: {
-    text: "Top Countries"
+    text: "Top Inbound Markets - San Francisco"
   },
 
   chart: {
@@ -72,7 +79,22 @@ $('#container').highcharts('Map', {
       enabled: false,
       format: '{point.name}'
     }
-  }]
+  },
+  {
+              type: 'mapbubble',
+              mapData: Highcharts.geojson(Highcharts.maps[world_map]),
+              name: 'Home City',
+              joinBy: ['hc-key'],
+              data: my_city,
+              minSize: 4 ,
+              maxSize: '7%',
+              color: "red",
+              tooltip: {
+                 pointFormat: '{point.name}: {point.z} '
+              }
+    }
+  ]
+
 });
 $(window).load(function () {
   $('#container').highcharts().series[0].points[0].zoomTo();

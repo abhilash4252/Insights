@@ -1,5 +1,11 @@
 $(function() {
   var us_map = 'countries/us/us-all-all-highres';
+  var my_city = [
+    {
+      "hc-key": "us-ca-075",
+      'z': 150
+    }
+  ];
   var us_data = [
     {
       "hc-key": 'us-fl-001',
@@ -8,10 +14,6 @@ $(function() {
     {
       "hc-key": 'us-mn-001',
       'z': 90
-    },
-    {
-      "hc-key": 'us-ca-001',
-      'z': 85
     },
     {
       "hc-key": 'us-md-001',
@@ -26,7 +28,7 @@ $(function() {
       'z': 70
     },
    {
-      "hc-key": 'us-ny-001',
+      "hc-key": 'us-ny-061',
       'z': 60
    },
    {
@@ -37,7 +39,7 @@ $(function() {
 
 $('#container').highcharts('Map', {
    title: {
-    text: "Top Cities In US"
+    text: "Top Inbound Markets - San Francisco"
   },
   chart: {
     animation: true,
@@ -89,7 +91,21 @@ $('#container').highcharts('Map', {
               tooltip: {
                  pointFormat: '{point.name}: {point.z} '
               }
+    },
+   {
+              type: 'mapbubble',
+              mapData: Highcharts.geojson(Highcharts.maps[us_map]),
+              name: 'Home City',
+              joinBy: ['hc-key'],
+              data: my_city,
+              minSize: 4 ,
+              maxSize: '7%',
+              color: "red",
+              tooltip: {
+                 pointFormat: '{point.name}: {point.z} '
+              }
     }
+
   ]
 });
 });
